@@ -4,7 +4,7 @@ import pyttsx3
 import speech_recognition as sr
 from decouple import config
 from datetime import datetime
-from functions.os_ops import open_calculator, open_camera, open_cmd, open_notepad, open_discord
+from functions.os_ops import open_calculator, open_camera, open_cmd, open_vscode, open_discord
 from random import choice
 from utils import opening_text
 from pprint import pprint
@@ -82,13 +82,13 @@ if __name__ == '__main__':
     while True:
         query = take_user_input().lower()
 
-        if 'open notepad' in query:
-            open_notepad()
+        if 'open visual studio code' in query:
+            open_vscode()
 
         elif 'open discord' in query:
             open_discord()
 
-        elif 'open command prompt' in query or 'open cmd' in query:
+        elif 'open command' in query or 'open terminal' in query:
             open_cmd()
 
         elif 'open camera' in query:
@@ -175,3 +175,6 @@ if __name__ == '__main__':
             speak(f"Also, the weather report talks about {weather}")
             speak("For your convenience, I am printing it on the screen sir.")
             print(f"Description: {weather}\nTemperature: {temperature}\nFeels like: {feels_like}")
+            
+        elif 'quit' in query:
+            quit()
