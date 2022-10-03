@@ -4,7 +4,7 @@ import pyttsx3
 import speech_recognition as sr
 from decouple import config
 from datetime import datetime
-from functions.os_ops import open_calculator, open_camera, open_cmd, open_vscode, open_discord
+from functions.os_ops import *
 from random import choice
 from utils import opening_text
 from pprint import pprint
@@ -85,6 +85,9 @@ if __name__ == '__main__':
         if 'open visual studio code' in query:
             open_vscode()
 
+        elif 'open finder' in query:
+            open_finder()
+        
         elif 'open discord' in query:
             open_discord()
 
@@ -97,6 +100,33 @@ if __name__ == '__main__':
         elif 'open calculator' in query:
             open_calculator()
 
+        elif 'open safari' in query:
+            open_safari()
+            
+        elif 'open brave' in query:
+            open_brave()
+
+        elif 'open chrome' in query:
+            open_chrome()
+
+        elif 'open contact' in query:
+            open_contacts()
+            
+        elif 'open calendar' in query:
+            open_calendar()
+        
+        elif 'open notes' in query:
+            open_notes()
+        
+        elif 'open messages' in query:
+            open_messages()
+        
+        elif 'open plans' in query:
+            open_plans()
+            
+        elif 'open photos' in query:
+            open_photos()
+        
         elif 'ip address' in query:
             ip_address = find_my_ip()
             speak(f'Your IP Address is {ip_address}.\n For your convenience, I am printing it on the screen sir.')
@@ -176,5 +206,5 @@ if __name__ == '__main__':
             speak("For your convenience, I am printing it on the screen sir.")
             print(f"Description: {weather}\nTemperature: {temperature}\nFeels like: {feels_like}")
             
-        elif 'quit' in query:
+        elif 'stop' in query:
             quit()
