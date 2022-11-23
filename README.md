@@ -3,6 +3,7 @@
 Hey there! 👋 
 
 GIDEON is an Voice Assistant App based on Python.
+!!! Only available on MacOS/LinuxOS for now !!!
 
 Demo : https://www.youtube.com/shorts/GkbXJQm1q98
 
