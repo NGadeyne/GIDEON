@@ -5,6 +5,7 @@ from email.message import EmailMessage
 import smtplib
 from decouple import config
 
+
 NEWS_API_KEY = config("NEWS_API_KEY")
 OPENWEATHER_APP_ID = config("OPENWEATHER_APP_ID")
 TMDB_API_KEY = config("TMDB_API_KEY")

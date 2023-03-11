@@ -6,6 +6,10 @@ GIDEON is an Voice Assistant App based on Python.
 
 Demo : https://www.youtube.com/shorts/GkbXJQm1q98
 
+<h2> New feature aviable !</h2>
+
+We have just had CHAT GPT feature.
+
 <h2>Some uses</h2>
 
 - Handicap. (makes web/computer easier to use).
@@ -36,6 +40,8 @@ PASSWORD=None
 NEWS_API_KEY=None
 OPENWEATHER_APP_ID=None
 TMDB_API_KEY=None
+OPENAI_API_KEY=None
+OPENAI_ORG =None
 ```
 
 Replace `None` with your values

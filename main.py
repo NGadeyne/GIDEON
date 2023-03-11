@@ -1,5 +1,5 @@
 import requests
-from functions.online_ops import find_my_ip, get_latest_news, get_random_advice, get_random_joke, get_trending_movies, get_weather_report, play_on_youtube, search_on_google, search_on_wikipedia, send_email, send_whatsapp_message
+from functions.online_ops import *
 import pyttsx3
 import speech_recognition as sr
 from decouple import config
@@ -8,10 +8,14 @@ from functions.os_ops import *
 from random import choice
 from utils import opening_text
 from pprint import pprint
+import openai
 
 
+# ENV
 USERNAME = config('USER')
 BOTNAME = config('BOTNAME')
+OPEINAI_API_KEY = config('OPENAI_API_KEY')
+OPENAI_ORG = config('OPENAI_ORG')
 
 
 engine = pyttsx3.init('nsss')
@@ -61,7 +65,7 @@ def take_user_input():
 
     try:
         print('Recognizing...')
-        query = r.recognize_google(audio, language='en-en')
+        query = r.recognize_google(audio, language='fr-fr')
         if not 'exit' in query or 'stop' in query:
             speak(choice(opening_text))
         else:
@@ -77,6 +81,30 @@ def take_user_input():
     return query
 
 
+# Chat GPT
+openai.organization = OPENAI_ORG
+openai.api_key = OPEINAI_API_KEY
+start_sequence = "\nAI:"
+restart_sequence = "\nHuman: "
+
+
+def gpt_ouput(prompt):
+    response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=prompt,
+    temperature=0.9,
+    max_tokens=150,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0.6,
+    stop=[" Human:", " AI:"]
+    )
+    data = response.choices[0].text
+    print(data)
+    speak(data)
+   
+
+# Main function
 if __name__ == '__main__':
     greet_user()
     while True:
@@ -208,3 +236,5 @@ if __name__ == '__main__':
             
         elif 'stop' in query:
             quit()
+        else:
+            gpt_ouput(query)
